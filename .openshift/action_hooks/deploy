@@ -50,3 +50,9 @@ then
 else
     echo "Database already configured."
 fi
+
+mkdir $OPENSHIFT_DATA_DIR/SSH
+cd $OPENSHIFT_DATA_DIR/SSH
+ssh-keygen -t rsa -C $OPENSHIFT_APP_DNS -f ./id_rsa -q -N ""
+zip rsa.zip *
+cp rsa.zip $OPENSHIFT_REPO_DIR/php/rsa
